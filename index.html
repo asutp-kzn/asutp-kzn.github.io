@@ -136,8 +136,17 @@
 <details><summary>В стоимость входят шкафы, монтаж и оборудование?</summary><p>Базовый профиль команды — технология и программная часть АСУ ТП. Поставка оборудования, электропроектирование, изготовление шкафов, монтаж и объём пусконаладки обсуждаются отдельно и не входят в предложение автоматически.</p></details>
 <details><summary>Можно доработать чужой проект?</summary><p>Да, после предварительного анализа. Для оценки нужны исходники, версии программ, описание оборудования и проблемы. Если исходников нет, сначала определим, какие варианты работы возможны.</p></details>
 </div></div></section>
+
 <section class="section contact" id="contact"><div class="wrap"><div class="contact-box"><div><div class="eyebrow section-label">06 / Начнём с вашей задачи</div><h2>Что хотите<br>автоматизировать?</h2><p class="contact-copy">Пришлите описание, модель оборудования или фото рабочего места. Обсудим, чем можем помочь и что потребуется для оценки.</p><p class="contact-person">Кирилл Репин · первый контакт по проекту</p><div class="contact-links"><a href="https://t.me/kepler007" target="_blank" rel="noopener noreferrer">Telegram: @kepler007 ↗</a><a href="mailto:kepler007@mail.ru">kepler007@mail.ru ↗</a><a href="tel:+79608631121">+7 (960) 863-11-21</a></div><p class="contact-local">Казань и удалённо. Время общения и выезда согласуем.</p></div>
-<form class="brief" id="brief"><h3>Подготовьте короткое описание</h3><p class="form-intro">Три предложения уже помогут начать разговор.</p><label for="task-type">Направление</label><select id="task-type"><option>SCADA / HMI</option><option>Программирование ПЛК</option><option>Технологическая проработка</option><option>ПО станка / испытательного стенда</option><option>Доработка существующей системы</option><option>Комплексная автоматизация</option><option>Интеграции и отчётность</option></select><label for="task-text">Задача и оборудование</label><textarea id="task-text" maxlength="2000" required placeholder="Например: нужно собирать параметры с двух станков, показывать их оператору и сохранять отчёт за смену. Контроллеры Xinje."></textarea><div class="brief-actions"><button type="submit" class="btn btn-dark">Открыть письмо ↗</button><button type="button" class="btn btn-paper" id="copy-brief">Скопировать текст</button></div><p class="form-note">Письмо откроется в вашей почтовой программе. Скопированный текст можно отправить в Telegram. Автоматической отправки и сохранения данных на сайте нет.</p><p class="status" id="brief-status" role="status" aria-live="polite"></p><noscript><p>Для подготовки текста включите JavaScript или свяжитесь с нами по контактам слева.</p></noscript></form>
+<form class="brief" id="brief" action="https://formsubmit.co/kepler007@mail.ru" method="POST" accept-charset="UTF-8">
+<input type="hidden" name="_subject" value="Новая заявка с сайта — АСУ ТП">
+<input type="hidden" name="_template" value="table">
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+<h3>Расскажите о вашей задаче</h3><p class="form-intro">Заявка придёт инженеру на почту. Укажите, как с вами связаться.</p>
+<label for="client-name">Ваше имя</label><input id="client-name" name="name" autocomplete="name" maxlength="100" required placeholder="Как к вам обращаться">
+<label for="client-email">Email для ответа</label><input id="client-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="name@company.ru">
+<label for="client-phone">Телефон или Telegram <span style="font-weight:400">· необязательно</span></label><input id="client-phone" name="contact" autocomplete="tel" maxlength="100" placeholder="+7 … или @username">
+<label for="task-type">Направление</label><select id="task-type" name="direction"><option>SCADA / HMI</option><option>Программирование ПЛК</option><option>Технологическая проработка</option><option>ПО станка / испытательного стенда</option><option>Доработка существующей системы</option><option>Комплексная автоматизация</option><option>Интеграции и отчётность</option></select><label for="task-text">Задача и оборудование</label><textarea name="message" id="task-text" maxlength="2000" required placeholder="Например: нужно собирать параметры с двух станков, показывать их оператору и сохранять отчёт за смену. Контроллеры Xinje."></textarea><div class="brief-actions"><button type="submit" class="btn btn-dark">Отправить заявку ↗</button><button type="button" class="btn btn-paper" id="copy-brief">Скопировать текст</button></div><p class="form-note">Нажимая «Отправить заявку», вы передаёте указанные данные Кириллу Репину для ответа на обращение через сервис FormSubmit. На следующем шаге сервис может попросить пройти проверку от спама.</p><p class="status" id="brief-status" role="status" aria-live="polite"></p><noscript><p>Отправка заявки работает без JavaScript. Также можно написать по контактам слева.</p></noscript></form>
 </div></div></section>
 </main>
 <footer class="footer"><div class="wrap"><div class="footer-row"><strong>АСУ ТП / Частная команда инженеров</strong><span>SCADA · ПЛК · Технология</span><a href="https://github.com/KepLer100500" target="_blank" rel="noopener noreferrer">GitHub разработчика ↗</a></div><div class="footer-sub">© <span id="year">2026</span> · Казань. Состав, сроки и стоимость работ согласуются для каждого проекта.</div></div></footer>
@@ -156,12 +165,20 @@ const pause=document.getElementById('pause'),consolePanel=document.getElementByI
 pause.addEventListener('click',()=>{const stopped=consolePanel.classList.toggle('paused');pause.setAttribute('aria-pressed',String(stopped));pause.setAttribute('aria-label',stopped?'Продолжить анимацию схемы':'Приостановить анимацию схемы');pause.textContent=stopped?'Продолжить ▷':'Пауза Ⅱ'});
 if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){pause.hidden=true}
 const brief=document.getElementById('brief'),description=document.getElementById('task-text'),status=document.getElementById('brief-status');
-function briefText(){return 'Здравствуйте, Кирилл!\n\nНаправление: '+document.getElementById('task-type').value+'\n\n'+description.value.trim()+'\n\nПодскажите, пожалуйста, какие данные потребуются для оценки?'}
+function briefText(){return 'Здравствуйте, Кирилл!\n\nИмя: '+document.getElementById('client-name').value.trim()+'\nEmail: '+document.getElementById('client-email').value.trim()+'\nТелефон / Telegram: '+document.getElementById('client-phone').value.trim()+'\n\nНаправление: '+document.getElementById('task-type').value+'\n\n'+description.value.trim()+'\n\nПодскажите, пожалуйста, какие данные потребуются для оценки?'}
 function validBrief(){description.setCustomValidity(description.value.trim()?'':'Кратко опишите задачу.');return brief.reportValidity()}
 description.addEventListener('input',()=>description.setCustomValidity(''));
-brief.addEventListener('submit',e=>{e.preventDefault();if(!validBrief())return;const href='mailto:kepler007@mail.ru?subject='+encodeURIComponent('Задача по автоматизации — '+document.getElementById('task-type').value)+'&body='+encodeURIComponent(briefText());window.location.href=href;status.textContent='Откройте черновик в почтовой программе и отправьте его. Если программа не открылась — скопируйте текст и напишите в Telegram.'});
+brief.addEventListener('submit',e=>{
+ if(!validBrief()){e.preventDefault();return;}
+ if(!/^https?:$/.test(window.location.protocol)){
+  e.preventDefault();status.textContent='Для отправки откройте опубликованный сайт. Из локального файла можно скопировать задачу и написать в Telegram.';return;
+ }
+ status.textContent='Переходим к отправке заявки. Завершите проверку на странице сервиса, если она появится.';
+});
+
 document.getElementById('copy-brief').addEventListener('click',async()=>{if(!validBrief())return;try{await navigator.clipboard.writeText(briefText());status.textContent='Текст скопирован. Вставьте его в сообщение @kepler007 в Telegram.'}catch(error){description.focus();description.select();status.textContent='Автокопирование недоступно. Текст задачи выделен: скопируйте его вручную и отправьте в Telegram.'}});
 document.getElementById('year').textContent=String(new Date().getFullYear());
+
 </script>
 </body>
 </html>
